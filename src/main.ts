@@ -1,4 +1,4 @@
-import './style.css'
+import './main.css'
 import './global.d.ts'
 
 import { ContractTransactionResponse, ethers } from 'ethers';

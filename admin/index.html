@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../src/style.css" />
+  <title>Vite + TS</title>
+</head>
+
+<body>
+  <div id="overlay" class="popup-bg dark-bg">
+    <button class="swap-btn" id="open-connect-modal">CONNECT WALLET</button>
+  </div>
+  <div class="container">
+    <div class="box">
+      <div class="task-title">setLitheumERC20TokenAddress</div>
+      <div class="boxes">
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Enter WLTH address:</p>
+            <input class="amount" name="wlth-address" id="wlth-address" />
+          </div>
+        </div>
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Select the offering:</p>
+            <!-- <input class="amount" name="usdt" id="blth-input" /> -->
+
+            <select name="bco-type" id="bco-select-wlth">
+              <option value="">--Please choose an option--</option>
+              <option value="blth">Presale - BLTH</option>
+              <option value="plth">Private - PLTH</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <button class="swap-btn" id="set-wlth-address-btn">Set WLTH</button>
+    </div>
+
+    <div class="box">
+      <div class="task-title">launchSAFT</div>
+      <div class="boxes">
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Select the offering:</p>
+            <!-- <input class="amount" name="usdt" id="blth-input" /> -->
+
+            <select name="bco-type" id="bco-select-saft">
+              <option value="">--Please choose an option--</option>
+              <option value="blth">Presale - BLTH</option>
+              <option value="plth">Private - PLTH</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <button class="swap-btn" id="launch-saft-btn">Launch Saft</button>
+    </div>
+
+    <div class="box">
+      <div class="task-title">withdraw</div>
+      <div class="boxes">
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Amount to with draw:</p>
+            <input class="amount" name="usdt-withdraw" id="usdt-withdraw" />
+          </div>
+        </div>
+
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Select the offering:</p>
+            <!-- <input class="amount" name="usdt" id="blth-input" /> -->
+
+            <select name="bco-type" id="bco-select-withdraw">
+              <option value="">--Please choose an option--</option>
+              <option value="blth">Presale - BLTH</option>
+              <option value="plth">Private - PLTH</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <button class="swap-btn" id="withdraw-usdt-btn">Withdraw USDT</button>
+    </div>
+
+    <div class="box">
+      <div class="task-title">setStaticPrice</div>
+      <div class="boxes">
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Set the static price:</p>
+            <input class="amount" name="usdt-for-blth" id="usdt-for-blth" />
+          </div>
+        </div>
+
+      </div>
+      <button class="swap-btn" id="set-static-price-btn">Set Price</button>
+    </div>
+
+    <div class="box">
+      <div class="task-title">addToWhitelist</div>
+      <div class="boxes">
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Address to whitelist:</p>
+            <input class="amount" name="wl-address" id="wl-address" />
+          </div>
+        </div>
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Limit for the account:</p>
+            <input class="amount" name="wl-limit" id="wl-limit" />
+          </div>
+        </div>
+      </div>
+      <button class="swap-btn" id="add-to-whitelist-btn">Add to whitelist</button>
+    </div>
+
+    <div class="box">
+      <div class="task-title">removeFromWhitelist</div>
+      <div class="boxes">
+        <div class="currency-box">
+          <div class="first-content">
+            <p class="paid">Address to remove from whitelist:</p>
+            <input class="amount" name="wl-rm-address" id="wl-rm-address" />
+          </div>
+        </div>
+      </div>
+      <button class="swap-btn" id="remove-from-whitelist-btn">Remove from whitelist</button>
+    </div>
+
+  </div>
+</body>
+
+<script type="module" src="/src/admin.ts"></script>
+
+</html>
