@@ -1,3 +1,6 @@
+body {
+  background: linear-gradient(90deg, var(--Black) 50%, #151515 50%);
+}
 .container {
   height: 100vh;
   max-width: 1440px;
@@ -336,7 +339,8 @@
 }
 
 .box .currency-box .first-content .amount {
-  color: var(--Beige);
+  /* color: var(--Beige); */
+  color: #000;
   font-family: "Litheum Title";
   font-size: 30px;
 
@@ -476,4 +480,84 @@
   .box-container .info {
     width: 100%;
   }
+}
+
+.popup-bg {
+  position: fixed;
+  z-index: 999;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.editing-popup {
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  width: 441px;
+  padding: 9px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  border-radius: 16px;
+  background: var(--White);
+  top: 30%;
+  left: 10%;
+}
+
+.editing-popup .percentage {
+  display: flex;
+  height: 32.566px;
+  padding: 7px 33px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: rgba(122, 125, 61, 0.3);
+}
+
+.editing-popup .percentage p {
+  color: var(--Black);
+
+  /* NAV/Nav Link */
+  font-family: "Litheum Title";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 16.8px */
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+}
+
+.editing-popup .lost-fee {
+  color: var(--Black);
+  font-family: "Litheum Text";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 18px */
+  margin-bottom: 18px;
+}
+
+.editing-popup .btn-container {
+  width: 100%;
+}
+
+.editing-popup .close-btn {
+  background: transparent;
+  border: none;
+  margin: auto;
+  width: 100%;
+}
+
+.editing-popup .close-btn p {
+  color: var(--Black);
+  font-family: "Litheum Title";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%; /* 13.2px */
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
 }
