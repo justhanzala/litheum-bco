@@ -1,4 +1,6 @@
 import '../src/admin.css';
+import './global.d.ts';
+import modal from './walletConnect.ts';
 
 import { ContractTransactionResponse, ethers } from 'ethers';
 import { LitheumPresaleBCOERC20 as ILitheumPresaleBCOERC20 } from "./types/LitheumPresaleBCOERC20";
@@ -25,7 +27,13 @@ const openConnectModalBtn = document.getElementById('open-connect-modal');
 const overlay = document.getElementById('overlay') as HTMLDivElement;
 
 openConnectModalBtn && openConnectModalBtn.addEventListener('click', async () => {
-    accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    // accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    modal.open();
+    const walletProvider = await modal.getWalletProvider() as ethers.Eip1193Provider;
+
+    console.log('chain id', modal.getChainId());
+
+    provider = new ethers.BrowserProvider(walletProvider);
 
     const signer = await provider.getSigner();
     const plthContractSigned = plthContract.connect(signer);
@@ -125,18 +133,18 @@ const withdrawBtn = document.getElementById('withdraw-usdt-btn') as HTMLButtonEl
 
 const withdraw = async () => {
     const bcoOffering = (document.getElementById('bco-select-withdraw') as HTMLSelectElement).value;
-    const withdrawAmount = Number((document.getElementById('usdt-withdraw') as HTMLInputElement).value);
+    const withdrawAmount = (document.getElementById('usdt-withdraw') as HTMLInputElement).value;
 
-    if (bcoOffering && withdrawAmount && withdrawAmount > 0) {
+    if (bcoOffering && withdrawAmount && Number(withdrawAmount) > 0) {
         const signer = await provider.getSigner();
         if (bcoOffering === 'blth') {
             const blthContractSigned = blthContract.connect(signer);
-            const tx = await blthContractSigned.withdraw(withdrawAmount) as ContractTransactionResponse;
+            const tx = await blthContractSigned.withdraw(ethers.parseEther(withdrawAmount)) as ContractTransactionResponse;
             await tx.wait();
 
         } else if (bcoOffering === 'plth') {
             const plthContractSigned = plthContract.connect(signer);
-            const tx = await plthContractSigned.withdraw(withdrawAmount) as ContractTransactionResponse;
+            const tx = await plthContractSigned.withdraw(ethers.parseEther(withdrawAmount)) as ContractTransactionResponse;
             await tx.wait();
         }
 
@@ -151,12 +159,12 @@ withdrawBtn?.addEventListener('click', withdraw);
 const setStaticPriceBtn = document.getElementById('set-static-price-btn') as HTMLButtonElement;
 
 const setStaticPrice = async () => {
-    const staticPrice = Number((document.getElementById('usdt-for-blth') as HTMLInputElement).value);
+    const staticPrice = (document.getElementById('usdt-for-blth') as HTMLInputElement).value;
 
-    if (staticPrice && staticPrice > 0) {
+    if (staticPrice && Number(staticPrice) > 0) {
         const signer = await provider.getSigner();
         const plthContractSigned = plthContract.connect(signer);
-        const tx = await plthContractSigned.setStaticPrice(staticPrice) as ContractTransactionResponse;
+        const tx = await plthContractSigned.setStaticPrice(ethers.parseEther(staticPrice)) as ContractTransactionResponse;
         await tx.wait();
 
         setStaticPriceBtn.innerText = 'Static Price Set';
@@ -171,12 +179,12 @@ const addToWhitelistBtn = document.getElementById('add-to-whitelist-btn') as HTM
 
 const addToWhitelist = async () => {
     const address = (document.getElementById('wl-address') as HTMLInputElement).value;
-    const limit = Number((document.getElementById('wl-limit') as HTMLInputElement).value);
+    const limit = (document.getElementById('wl-limit') as HTMLInputElement).value;
 
-    if (address && limit && limit > 0) {
+    if (address && limit && Number(limit) > 0) {
         const signer = await provider.getSigner();
         const plthContractSigned = plthContract.connect(signer);
-        const tx = await plthContractSigned.addToWhitelist(address, limit) as ContractTransactionResponse;
+        const tx = await plthContractSigned.addToWhitelist(address, ethers.parseEther(limit)) as ContractTransactionResponse;
         await tx.wait();
 
         addToWhitelistBtn.innerText = 'Adding sucessful';
@@ -190,7 +198,7 @@ addToWhitelistBtn?.addEventListener('click', addToWhitelist);
 const removeFromWhitelistBtn = document.getElementById('remove-from-whitelist-btn') as HTMLButtonElement;
 
 const removeFromWhitelist = async () => {
-    const address = (document.getElementById('wl-address') as HTMLInputElement).value;
+    const address = (document.getElementById('wl-rm-address') as HTMLInputElement).value;
 
     if (address) {
         const signer = await provider.getSigner();

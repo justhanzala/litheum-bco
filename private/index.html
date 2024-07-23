@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../public/css/global.css" />
+  <link rel="stylesheet" href="../css/global.css" />
   <link rel="stylesheet" href="../src/style.css" />
   <title>Vite + TS</title>
 </head>
@@ -20,8 +20,8 @@
           <p class="blth">PLTH (soulbound)</p>
         </div>
         <div class="supply">
-          <p>IDO Liquid Supply: 650M BLTH</p>
-          <p>Total Supply: 5B BLTH</p>
+          <p>IDO Liquid Supply: 650M PLTH</p>
+          <p>Total Supply: 5B PLTH</p>
         </div>
       </div>
       <div>
@@ -30,7 +30,7 @@
             <div class="total-supply">
               <div class="align">
                 <img src="../assets/supply-line-1.svg" alt="Supply Line" />
-                <p class="text-blth">200M BLTH</p>
+                <p class="text-blth">200M PLTH</p>
                 <img src="../assets/supply-line-2.svg" alt="Supply Line" />
               </div>
               <p class="text-supply">Total Supply</p>
@@ -40,7 +40,7 @@
                 <p class="min-amount">sold</p>
               </div>
               <div class="amounts" id="left-progress">
-                <p class="max-amount"><span id="left-amount">50M</span> BLTH</p>
+                <p class="max-amount"><span id="left-amount">50M</span> PLTH</p>
               </div>
             </div>
             <div class="prizes">
@@ -62,37 +62,8 @@
           <div class="currency-box" id="usdt-box">
             <div class="first-content">
               <p class="paid">YOU SEND*:</p>
-              <input class="amount" name="blth" id="usdt-input" />
+              <input class="amount" name="plth" id="usdt-input" />
               <div>
-                <p class="max">
-                  Max Slippage: <span id="slippage-value">2</span> % <span cursor="pointer" id="show-slippage" class="edit">(edit)</span>
-                </p>
-                <div id="slippage-dd" class="editing-popup">
-                  <div class="percentage" data-value="0">
-                    <p>0.0 %</p>
-                  </div>
-                  <div class="percentage" data-value="0.5">
-                    <p>0.5 %</p>
-                  </div>
-                  <div class="percentage" data-value="1">
-                    <p>1.0 %</p>
-                  </div>
-                  <div class="percentage" data-value="1.5">
-                    <p>1.5 %</p>
-                  </div>
-                  <div class="percentage" data-value="2">
-                    <p>2.0 %</p>
-                  </div>
-                  <div class="btn-container">
-                    <p class="lost-fee">
-                      *a lower slippage may result in revert() and lost gas fee
-                    </p>
-                    <button class="close-btn" id="close-slippage-dd">
-                      <p>Close</p>
-                    </button>
-                  </div>
-                </div>
-
               </div>
             </div>
             <div class="second-content">
@@ -106,33 +77,33 @@
           <div class="arrow" id="flip-box" cursor="pointer">
             <img src="../assets/arrow-down.svg" alt="Arrow" />
           </div>
-          <div class="currency-box" id="blth-box">
+          <div class="currency-box" id="plth-box">
             <div class="first-content">
               <p class="paid">TOTAL AVAILABLE FOR YOU:</p>
-              <input class="amount" name="usdt" id="blth-input" />
+              <input class="amount" name="usdt" id="plth-input" />
             </div>
             <div class="second-content">
               <div class="currency">
                 <img src="../assets/litheum-icon.svg" alt="Litheum" />
-                <p>BLTH</p>
+                <p>PLTH</p>
               </div>
-              <p class="balance">BALANCE: <span id="blth-balance">0</span> LTH</p>
+              <p class="balance">BALANCE: <span id="plth-balance">0</span> PLTH</p>
             </div>
           </div>
         </div>
-        <button class="swap-btn" id="open-connect-modal">CONNECT WALLET</button>
-        <button class="swap-btn" id="swap">SWAP</button>
-        <button class="swap-btn" id="reverse-swap">REVERSE SWAP</button>
+        <button class="swap-btn" id="open-connect-modal-pvt">CONNECT WALLET</button>
+        <button class="swap-btn" id="static-swap">SWAP</button>
+        <!-- <button class="swap-btn" id="reverse-swap">REVERSE SWAP</button> -->
         <!-- <button class="swap-btn" id="open-network-modal">Open Networks</button> -->
       </div>
-      <div class="info">
+      <!-- <div class="info">
         <p class="tax">*includes 2% fee + gas</p>
         <p class="detail">(Details)</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </body>
 
-<script type="module" src="/src/main.ts"></script>
+<script type="module" src="/src/private.ts"></script>
 
 </html>
