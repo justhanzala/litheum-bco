@@ -6,7 +6,7 @@ import { MockUSDTToken as IMockUSDT } from "./types/MockUSDTToken";
 import { LitheumPresaleBCOERC20 as ILitheumPresaleBCOERC20 } from "./types/LitheumPresaleBCOERC20";
 
 import CONTRACT_ADDRESS from './constants';
-import LitheumPresaleBCOERC20 from  './contracts/LitheumPresaleBCOERC20.sol/LitheumPresaleBCOERC20.json';
+import LitheumPresaleBCOERC20 from './contracts/LitheumPresaleBCOERC20.sol/LitheumPresaleBCOERC20.json';
 import MockUSDTToken from './contracts/MockUSDTToken.sol/MockUSDTToken.json';
 
 
@@ -19,8 +19,8 @@ const getCurrentPrice = async () => {
         const price = await blthContract.getCurrentPrice();
         document.getElementById('current-price')!.innerText = ethers.formatUnits(price, 'ether');
         const blthLeft = await blthContract.getBLTHBalance();
-        document.getElementById('left-amount')!.innerText = Math.floor(Number(ethers.formatUnits(blthLeft, 'ether'))/1000000).toFixed(0)
-        const leftPercent = (Number(ethers.formatUnits(blthLeft, 'ether'))/500000000) * 100;
+        document.getElementById('left-amount')!.innerText = Math.floor(Number(ethers.formatUnits(blthLeft, 'ether')) / 1000000).toFixed(0)
+        const leftPercent = (Number(ethers.formatUnits(blthLeft, 'ether')) / 500000000) * 100;
         const soldPercent = 100 - leftPercent;
 
         document.getElementById('sold-progress')!.style.width = `${soldPercent.toFixed(0)}%`;
@@ -67,14 +67,14 @@ overlay?.addEventListener('click', hideSlippage)
 
 let accounts: String[] = [];
 const swapBtn = document.getElementById('swap') as HTMLButtonElement;
-swapBtn?swapBtn.style.display = 'none':'';
+swapBtn ? swapBtn.style.display = 'none' : '';
 if (accounts.length) {
-    swapBtn?swapBtn.style.display = 'none':'';
+    swapBtn ? swapBtn.style.display = 'none' : '';
 }
 const reverseSwapBtn = document.getElementById('reverse-swap') as HTMLButtonElement;
-reverseSwapBtn?reverseSwapBtn.style.display = 'none':'';
+reverseSwapBtn ? reverseSwapBtn.style.display = 'none' : '';
 if (accounts.length) {
-    reverseSwapBtn?reverseSwapBtn.style.display = 'none':'';
+    reverseSwapBtn ? reverseSwapBtn.style.display = 'none' : '';
 }
 
 const openConnectModalBtn = document.getElementById('open-connect-modal')
@@ -85,8 +85,8 @@ openConnectModalBtn && openConnectModalBtn.addEventListener('click', async () =>
     await updateUserBalance();
     await getCurrentPrice();
 
-    openConnectModalBtn?openConnectModalBtn.style.display = 'none':'';
-    swapBtn?swapBtn.style.display = 'block':'';
+    openConnectModalBtn ? openConnectModalBtn.style.display = 'none' : '';
+    swapBtn ? swapBtn.style.display = 'block' : '';
 });
 
 const updateUserBalance = async () => {
@@ -237,3 +237,26 @@ slippageOptions && Array.from(slippageOptions).forEach((element) => {
 const closeSlippageBtn = document.getElementById('close-slippage-dd');
 
 closeSlippageBtn?.addEventListener('click', hideSlippage);
+
+
+const popupBg = document.getElementById("popup-bg");
+const tokenPopup = document.getElementById("token-popup");
+const handleOpenTokenPopup = () => {
+    popupBg!.style.display = "flex";
+    tokenPopup!.style.display = "flex";
+};
+
+const handleCloseTokenPopup = () => {
+    popupBg!.style.display = "none";
+    tokenPopup!.style.display = "none";
+};
+
+const tokenPopupBtn = document.getElementById("open-token-popup");
+const tokenPopupBtn2 = document.getElementById("open-token-popup-2");
+
+tokenPopupBtn?.addEventListener('click', handleOpenTokenPopup);
+tokenPopupBtn2?.addEventListener('click', handleOpenTokenPopup);
+
+const closeTokenPopupBtn = document.getElementById("close-token-popup");
+
+closeTokenPopupBtn?.addEventListener('click', handleCloseTokenPopup);

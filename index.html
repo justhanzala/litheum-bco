@@ -11,6 +11,22 @@
 </head>
 
 <body>
+  <div class="popup-bg" id="popup-bg">
+    <div class="token-popup" id="token-popup">
+      <button class="close-icon" id="close-token-popup">
+        <img src="../assets/close-icon.svg" alt="Close" />
+      </button>
+      <p class="title">TOKEN RELEASE CURVE</p>
+      <img
+        src="../assets/token-count-graph.svg"
+        class="graph"
+        alt="Graph"
+      />
+      <p class="fee">
+        *a 2% fee for all swaps is collected by Litheum Labs + Gas
+      </p>
+    </div>
+  </div>
   <div id="overlay" class=""></div>
   <div class="container">
     <div class="bonding">
@@ -53,7 +69,7 @@
             </div>
           </div>
         </div>
-        <p class="detail">(Details)</p>
+        <p class="detail" id="open-token-popup">(Details)</p>
       </div>
     </div>
     <div class="box-container">
@@ -127,7 +143,7 @@
       </div>
       <div class="info">
         <p class="tax">*includes 2% fee + gas</p>
-        <p class="detail">(Details)</p>
+        <p class="detail" id="open-token-popup-2">(Details)</p>
       </div>
     </div>
   </div>
