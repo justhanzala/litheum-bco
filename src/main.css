@@ -262,6 +262,7 @@
   line-height: 110%; /* 11px */
   letter-spacing: 0.4px;
   text-decoration-line: underline;
+  cursor: pointer;
 }
 
 .container .bonding .detail-btn {
@@ -278,6 +279,7 @@
   letter-spacing: 0.4px;
   text-align: right;
   margin-top: 8px;
+  cursor: pointer;
 }
 
 .box {
@@ -311,6 +313,7 @@
 .box .boxes .arrow img {
   height: 50px;
   width: 50px;
+  cursor: pointer;
 }
 
 .box .currency-box {
@@ -350,6 +353,13 @@
   line-height: 110%; /* 45.777px */
   letter-spacing: 1.665px;
   text-transform: uppercase;
+
+  background: transparent;
+  border: none;
+}
+
+.box .currency-box .first-content input:focus{
+  outline: none;
 }
 
 .box .currency-box .first-content .amount.blth {
@@ -368,6 +378,7 @@
 
 .box .currency-box .first-content .max .edit {
   color: var(--White);
+  cursor: pointer;
 }
 
 .box .currency-box .second-content {

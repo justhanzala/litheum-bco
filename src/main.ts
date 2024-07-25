@@ -260,3 +260,12 @@ tokenPopupBtn2?.addEventListener('click', handleOpenTokenPopup);
 const closeTokenPopupBtn = document.getElementById("close-token-popup");
 
 closeTokenPopupBtn?.addEventListener('click', handleCloseTokenPopup);
+
+
+// if someone click outside the popup then close it
+window.onclick = (event) => {
+    if (event.target === popupBg) {
+        handleCloseTokenPopup();
+        hideSlippage();
+    }
+};
