@@ -116,9 +116,11 @@ let usdtAmountInWei = 0;
 let slippage = '2';
 
 const updateAvailableBlth = async () => {
-    if (blthContract) {
+    if (blthContract && usdtInput && usdtInput.value && Number(usdtInput.value) > 0) {
         blthAmountInWei = await blthContract.getEstimatedSwapAmount(ethers.parseEther(usdtInput.value.toString()));
         blthInput.value = ethers.formatEther(blthAmountInWei);
+    } else {
+        blthInput.value = '0';
     }
 }
 
@@ -126,9 +128,11 @@ usdtInput?.addEventListener('input', updateAvailableBlth);
 
 
 const updateAvailableUsdt = async () => {
-    if (blthContract) {
-        usdtAmountInWei = await blthContract.getEstimatedRSwapAmount(ethers.parseEther(blthInput.value.toString()));
+    if (blthContract && blthInput && blthInput.value && Number(blthInput.value) > 0) {
+        usdtAmountInWei = await blthContract.getEstimatedUsdtAmount(ethers.parseEther(blthInput.value.toString()));
         usdtInput.value = ethers.formatEther(usdtAmountInWei);
+    } else {
+        usdtInput.value = '0';
     }
 }
 
@@ -207,6 +211,9 @@ flipBox?.addEventListener('click', () => {
 
         blthInput.disabled = !blthInput.disabled;
         usdtInput.disabled = !usdtInput.disabled;
+
+        usdtInput.value = '0';
+        blthInput.value = '0';
 
         if (openConnectModalBtn?.style.display === "none") {
             if (swapBtn.style.display === "none") {
