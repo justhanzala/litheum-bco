@@ -33,3 +33,9 @@ body {
   height: 100vh;
   position: relative;
 }
+
+button {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
